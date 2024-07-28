@@ -1,30 +1,26 @@
 # KUBERNETES (K8s)
 
-- Kubernetes is an open-source container management tool which automates container
-deployment, container scaling and load balancing.
-- It schedules, runs and manages isolated containers which are running on virtual/
-physical/ cloud machines.
+- Kubernetes is an open-source container management tool which automates container deployment, container scaling and load balancing.
+- It schedules, runs and manages isolated containers which are running on virtual/physical/ cloud machines.
 - All top cloud providers support Kubernetes.
 
 ## History:
-- Google developed an internal system called ‘borg’ (later named as omega) to deploy
-and manage thousands google application and services on their cluster.
-- In 2014, google introduced Kubernetes as an open-source platform written in Golang,
-and later donated to CNCF (cloud Native Computing Foundation).
+- Google developed an internal system called ‘borg’ (later named as omega) to deploy and manage thousands google application and services on their cluster.
+- In 2014, google introduced Kubernetes as an open-source platform written in Golang, and later donated to CNCF (cloud Native Computing Foundation).
 
 ## Online platform for K8s:
-- i. Kubernetes playground
-- ii. Play with K8s
-- iii. Play with Kubernetes classroom
+ i. Kubernetes playground
+ ii. Play with K8s
+ iii. Play with Kubernetes classroom
 
 ## Cloud based K8s services:
-- i. GKE: Google Kubernetes Services
-- ii. AKS: Azure Kubernetes services
-- iii. Amazon EKS: Amazon Elastic Kubernetes Services
+ i. GKE: Google Kubernetes Services
+ ii. AKS: Azure Kubernetes services
+ iii. Amazon EKS: Amazon Elastic Kubernetes Services
 
 ## Kubernetes installation tool:
-- i. Minicube
-- ii. Kubeadm
+ i. Minicube
+ ii. Kubeadm
 
 ## Problems with scaling up the containers:
 - Containers cannot communicate with each other.
@@ -44,29 +40,15 @@ and later donated to CNCF (cloud Native Computing Foundation).
  
 ## FEATURES KUBERNETES DOCKER SWARM
 
-Installation and cluster
-configuration
-Complicated and time consuming Fast and easy
-Supports K8s can work with almost all
-container types like rocket, docker,
-containerD
-Work with docker only
-GUI GUI available GUI not available
-Data volumes Only shared with containers in
-same POD
-Can be shared with any other
-containers
-Update and rollback Process scheduling to maintain
-services while updating
-Progressive updates and service
-health monitoring throughout
-the update
-Autoscaling Support vertical and horizontal
-autoscaling
-Not support autoscaling
-Logging and
-monitoring
-Inbuilt tool present for monitoring Used 3rd party tools like splunk
+| Features                                | Kubernetes                     | Docker Swarm  |
+| --------------------------------------- | -------------------------------|---------------|
+| Installation and cluster configuration  | Complicated and time consuming | Fast and easy |
+| Supports                                | K8s can work with almost all container types like rocket, docker,containerD   | Work with docker only |
+| GUI                                     | GUI available                  | GUI not available |
+| Data volumes | Only shared with containers in same POD |Can be shared with any other containers |
+| Update and rollback | Process scheduling to maintain services while updating | Progressive updates and service health monitoring throughout the update |
+| Autoscaling | Support vertical and horizontal autoscaling | Not support autoscaling |
+| Logging and monitoring | Inbuilt tool present for monitoring | Used 3rd party tools like splunk |
 
 ## Working with Kubernetes:
 - We create manifest (.yml/json).
@@ -145,7 +127,7 @@ Node is going to run 3 important pieces of software/ process.
  - It is required to assign IP address to PODs (dymanic).
  - Kube-proxy runs on each node and this make sure that each POD will get its own unique IP address. These 3 components collectively called NODE.
 
-##POD:
+## POD:
 - Smallest unit in Kubernetes.
 - POD is a group of one or more containers that are deployed together on the same host.
 - A cluster is a group of nodes.

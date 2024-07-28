@@ -14,7 +14,8 @@ systemctl enable docker
 ```
 
 ```
-sudo curl -s https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbXk5QkFRclFqenNVSHVWVGhqQms1SWFsaFRKQXxBQ3Jtc0trSlBEN0cxRV90WXRXZ2lvX21IS2pFT1VSWVYyQW9INzZ5a3VhTC1XZEZ2LS1RUkE0RS1VR2tFMUFEek9vS2FlVHFGRGJFV2pzcGZCOTFBNEZod0hYX0RGc1J0dE0zZEQwUHVEZGFWV2hrWlBrbUdCOA&q=https%3A%2F%2Fpackages.cloud.google.com%2Fapt%2Fdoc%2Fapt-key.gpg&v=ftrAFHL6w2c | sudo apt-key add 
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+ 
 ```
 
 ```
@@ -22,7 +23,8 @@ nano /etc/apt/sources.list.d/kubernetes.list
 ```
 
 ```
-deb https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa1VfR1VKRm1JMW5DWFpleDNQdWhjd0F0UWNMd3xBQ3Jtc0tuS1V0TTdWUkxBMWJaQ05HTHdpV1I1ekRmdkd3M2h3TllNSzFiZm9JbmtqZkx6OWo2bHNmNTlyS1IwRTJLX0E3bk56QXA5TXNsTnpHalFqZkFkS0gwbjNWWU5KNTI5bUE1TkM3RWkxamp3OC1kTnJkMA&q=http%3A%2F%2Fapt.kubernetes.io%2F&v=ftrAFHL6w2c/ kubernetes-xenial main
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+
 ```
 
 ```
@@ -51,10 +53,11 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 ```
-kubectl apply -f https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqazRxVnhXc2xDVk1EbzFPazlvNHN6czVlSHhjQXxBQ3Jtc0ttVkVESXdUUmpFSmV6SVRfeW00a0toMWJRejJzSF9WQ1F6a0dwSVVCQWh1dG95dHRJOHJIMEJKc1p3cFM1Q29DazNkMkgzQzgzYzhiUFRXdk9rcGMxTjhBTHViRTVjdERpdzdoYmlBNkRhQlhUV1VySQ&q=https%3A%2F%2Fraw.githubusercontent.com%2Fcoreos%2Fflannel%2Fmaster%2FDocumentation%2Fkube-flannel.yml&v=ftrAFHL6w2c
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
+
 ```
-kubectl apply -f https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbnp6eFJpWkkwR0h0a1VEQmM5Wkc2ZDhoT0JNZ3xBQ3Jtc0trOXB5dXhmOXZKUGhubVctZmhwVkpmbG1IVmFjYWQxd2J4WHNzdk84RHVJYWx6MVJKVEhXRk44XzJlYm5DSFBPTDFucU9JM0xmdHdUazVRbDRJSi1qVTNfai04b0swQ0hhSEVaUFl0TjhfaW9Hcm5qdw&q=https%3A%2F%2Fraw.githubusercontent.com%2Fcoreos%2Fflannel%2Fmaster%2FDocumentation%2Fk8s-manifests%2Fkube-flannel-rbac.yml&v=ftrAFHL6w2c
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
 ```
 
 ## CONFIGURE WORKER NODES (IN NODES)

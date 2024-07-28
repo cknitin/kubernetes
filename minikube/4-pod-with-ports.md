@@ -1,5 +1,6 @@
 ## POD WITH PORTS
 
+```
 kind: Pod
 apiVersion: v1
 metadata:
@@ -9,4 +10,5 @@ spec:
     - name: c00
       image: httpd
       ports:
-       - containerPort: 80  
+       - containerPort: 80
+```

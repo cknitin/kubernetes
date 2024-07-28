@@ -1,9 +1,9 @@
 ## MULTI CONTAINER POD ENVIRONMENT 
 
-kind: Pod
-apiVersion: v1
-metadata:
-  name: testpod3
+`kind: Pod`
+`apiVersion: v1`
+`metadata:`
+  `name: testpod3`
 spec:
   containers:
     - name: c00

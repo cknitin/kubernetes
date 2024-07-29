@@ -107,7 +107,7 @@ spec:
       containers:
         - name: c00
           image: ubuntu
-          command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5; done"]
+          command: ["/bin/bash", "-c", "while true; do echo Hello-World; sleep 5; done"]
 
 ```
 

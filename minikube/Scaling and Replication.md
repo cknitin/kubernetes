@@ -12,3 +12,24 @@
 - If a pod created using RC will be automatically replaced if they does Crash, failed, or terminated
 - RC is recommended if you just want to make sure 1 pod is always running, even after system reboots.
 - You Can run the RC with 1 replica & the RC will make sure the pod is always running.
+
+```
+kind: ReplicationController               
+apiVersion: v1
+metadata:
+  name: myreplica
+spec:
+  replicas: 2            
+  selector:        
+    myname: Bhupinder Rajput                             
+  template:                
+    metadata:
+      name: testpod6
+      labels:            
+        myname: Bhupinder
+    spec:
+     containers:
+       - name: c00
+         image: ubuntu
+         command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+```

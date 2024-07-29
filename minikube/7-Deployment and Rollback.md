@@ -14,6 +14,6 @@ Replication Controller & Replica Set is not able to do Updates & Rollback apps i
   -  K8s then monitors, if the node hosting an instance goes down or pod is deleted the deployment Controller replaces it. 
   -  This provides a self-healing mechanism to address machine failure or maintenance.
 
-![alt text]([http://url/to/img.png](https://github.com/cknitin/kubernetes/blob/main/images/Deployment%20and%20rollback%20-5.png))
+![alt text](https://github.com/cknitin/kubernetes/blob/main/images/Deployment%20and%20rollback%20-5.png))
 
 

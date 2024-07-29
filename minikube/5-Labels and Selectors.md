@@ -17,9 +17,9 @@ spec:
 
 # Node Selector
 
-- One use case of selecting lables is to constrain the set of nodes onto whcih a POD can be schedule.
+- One use case of selecting lables is to constrain the set of nodes onto which a POD can be schedule.
   i.e. You can tell a POD to only be able to run on particular node.
-- Generally such constraints are unessary as the scheduler will automatically do a responsilbe placement, but on certain circumtances we might need it.
+- Generally such constraints are unnessary as the scheduler will automatically do a responsilbe placement, but on certain circumtances we might need it.
 - We can use labels to tag nodes
 - You the node are tagged, you can use the label selectors to specifiy the PODs run only of specific nodes
 - First we give label to the node

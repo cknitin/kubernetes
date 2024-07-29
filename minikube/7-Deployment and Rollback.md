@@ -51,13 +51,17 @@ Replication Controller & Replica Set is not able to do Updates & Rollback apps i
   - Display the amount of time that the application has been Running.
 
 
-> LAB
+> LAB 
 
+```
 sudo su
+```
 
 command to install docker is
 
+```
 sudo apt update && apt -y install docker.io
+```
 
 install Kubectl now with the given link
 

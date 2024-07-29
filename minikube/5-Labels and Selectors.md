@@ -34,15 +34,17 @@ spec:
 :wq
 ``` 
 
+### To apply and create node
 ```
 kubectl apply -f Pod5.yml
 ```
 
+### To show labels
 ```
 kubectl get pods --show-labels
 ```
 
-### Now if you want to add a label to an existing pod ->
+### Now if you want to add a label to an existing pod 
 
 ```
 kubectl label pods myPod myName=test
@@ -51,12 +53,12 @@ kubectl label pods myPod myName=test
 kubectl get pods --show-labels
 ```
 
-### Now list pods matching a label ->
+### Now list pods matching a label 
 ```
 kubectl get pods -l env=development
 ```
 
-### Now give a list, where "development" label is not present ->
+### Now give a list, where "development" label is not present 
 ```
 kubectl get pods -l env!=development
 ```
@@ -69,6 +71,18 @@ kubectl delete pod -l env=development
 ```
 kubectl get pods
 ```
+
+## Labels - Selectors
+
+- Unlike name/UID, labels do not provide uniqueness, as in general, we can expect many objects to carry the same label.
+- Once labels are attached to an object we would need filters to narrow down and these are called as label selectors.
+- The API currently supports two types of selectors - equality based and set based.
+- A label selector can be made of multiple requirements which are comma separated.
+
+### Equality Based (=, !=)
+  name: crictl
+  class: nodes
+  project: test
 
 # Node Selector
 

@@ -33,3 +33,25 @@ spec:
          image: ubuntu
          command: ["/bin/bash", "-c", "while true; do echo Hello-World; sleep 5 ; done"]
 ```
+
+```
+kubectl get rc
+```
+
+```
+kubectl describe rc myreplica
+```
+
+Ctl + l
+
+```
+kubectl get pods
+```
+
+```
+kubectl delete pod pod-name
+```
+
+```
+kudectl get pods
+```

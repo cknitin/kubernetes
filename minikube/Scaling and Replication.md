@@ -26,7 +26,7 @@ spec:
     metadata:
       name: testpod6
       labels:            
-        myname: Nitin
+        myname: CKNitin
     spec:
      containers:
        - name: c00

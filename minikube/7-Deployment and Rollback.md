@@ -16,4 +16,17 @@ Replication Controller & Replica Set is not able to do Updates & Rollback apps i
 
 ![alt text](https://github.com/cknitin/kubernetes/blob/main/images/Deployment%20and%20rollback%20-5.png))
 
+### The following are typical use Cases of Deployments. Deployment & Rollback 
+#### 1 Create a deployment to rollout a Replicaset →
+  - The replicaset Creates pods in the Background. Check the status of the Rollout to see if it succeeds or not
+#### 2 Declare the new state of the Pods 
+  - By updating the PodTemplateSpec of the deployment. A new Replicaset is Created and the Deployment manages moving the pods from the Old Replicaset to the new one at a Controlled rate. Each new Repicaret updates the revision of the Deployment. 
+#### 3 Rollback to an earlier Deployment Revision 
+  - If the Current state of the Deployment is not stable Each rollback Updates the revision of the Deployment. 
+#### 4 Rollback to an earlier Deployment Revision 
+  - If the Current state of the deployment is not stable. Each Rollback updates the revision of the deployment.
+#### 5 Scale up the Deployment to facilitates more load. 
+#### 6 Pause the Deployment to apply multiple fixes to its PodTemplate Spec and then resume it to start a new Rollout 
+#### 7 Cleanup older Replicasets that dont need anymore
+
 

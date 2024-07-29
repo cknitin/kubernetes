@@ -111,6 +111,12 @@ kubectl get pods -l class=pods, myName=CKALIN
 
 ## NODE SELECTOR EXAMPLE
 
+Crate a pod where node label is 't2-medium'
+
+Create a yml file
+
+vi pod6.yml
+
 ```
 kind: Pod
 apiVersion: v1
@@ -126,5 +132,30 @@ spec:
     nodeSelector:                                         
        hardware: t2-medium 
 ```
+```
+:wq
+```
+```
+kubectl apply -f pod6.yml  <--- unable to create POD reason is no label 'hardware=t2.medium' on any node
+```
+```
+kubectl get pods
+```
+```
+kubectl describe pod nodelabels
+```
+```
+kubectl get nodes
+```
+
+Now assign the label on node, Now it will create POD
+``` 
+kubectl label nodes ip-172.25.68.45 hardware=t2.medium
+```
+Now check
+
+```
+kubectl get nodes
+``` 
 
 

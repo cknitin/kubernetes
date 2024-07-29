@@ -113,12 +113,12 @@ spec:
 
 To check deployment was Greated or not 
 ```
- Kubectl get deploy
+Kubectl get deploy
 ```
  
 To Check, how deployment creates RS & pods
 ```
- Kubectl describe deploy mydeploymen
+Kubectl describe deploy mydeploymen
 ``` 
 ```
 Kubectl get rs 
@@ -128,6 +128,19 @@ To scale up or scale down
 kubectl scale --replicas=1 deploy mydeployments
 ```
 
+To check, what is running inside Container 
+```
+Kubectl logs -f <podname>
+```
+``` 
+Kubectl rollout status deployment mydeployments
+```
+``` 
+Kubectl rollout history deployment mydeployments
+```
+``` 
+Kubectl rollout undo deploy/mydeployments
+```
 
 
 

@@ -96,3 +96,18 @@ spec:
          command: ["/bin/bash", "-c", "while true; do echo Hello World; sleep 5 ; done"]
 ```
 
+```
+kubectl apply -f myrs.yml
+kubectl get rs
+kubectl get pods
+
+kubectl scale --replicas=1 rs/myrs
+
+kubectl get pods
+
+kubectl get rs
+
+kubectl delete pod <pod-name>
+
+kubectl get pods 
+```

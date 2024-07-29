@@ -23,10 +23,36 @@ Replication Controller & Replica Set is not able to do Updates & Rollback apps i
   - By updating the PodTemplateSpec of the deployment. A new Replicaset is Created and the Deployment manages moving the pods from the Old Replicaset to the new one at a Controlled rate. Each new Repicaret updates the revision of the Deployment. 
 #### 3 Rollback to an earlier Deployment Revision 
   - If the Current state of the Deployment is not stable Each rollback Updates the revision of the Deployment. 
-#### 4 Rollback to an earlier Deployment Revision 
-  - If the Current state of the deployment is not stable. Each Rollback updates the revision of the deployment.
-#### 5 Scale up the Deployment to facilitates more load. 
-#### 6 Pause the Deployment to apply multiple fixes to its PodTemplate Spec and then resume it to start a new Rollout 
-#### 7 Cleanup older Replicasets that dont need anymore
+#### 4 Scale up the Deployment to facilitates more load. 
+#### 5 Pause the Deployment to apply multiple fixes to its PodTemplate Spec and then resume it to start a new Rollout 
+#### 6 Cleanup older Replicasets that dont need anymore
+
+### If there are problems in the deployment, Kubernetes will automatically roll back to the previous Version, however you can also explicitly rollback to a     specific revision, as in Our Case to Revision 1 (the Original Pod Version)
+
+### You Can rollback to a specific Version by Specifying it with --to-revision
+  - for eg → Kubectl rollout undo Type deploy/mydeployments --to-revision=2
+
+### Note That the name of the Replicaset is always formatted as [Deployment-name]- [Random string]
+```
+  cmd → Kubectl get cleploy
+```
+
+### When you inspect the deployments in your Cluster, the following fields are displayed:
+
+#### NAME 
+  - List the names of the deployments in the namespace
+#### READY 
+  - Display how many replicas of the application are available to your users. If follows the pattern of ready/Desired 
+#### UP-TO-DATE 
+  - Display the number of replicas that have been updated to achieve the desired state. 
+#### AVAILABLE 
+  - Displays how many replicas of the application are available to your users. 
+#### AGE 
+  - Display the amount of time that the application has been Running.
+
+
+
+
+
 
 

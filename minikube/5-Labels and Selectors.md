@@ -1,10 +1,19 @@
+# Labels, Selectors, ReplicationController and ReplicaSet in Kubernetes
+
+- Labels are the mechanism you use to organise Kubernetes objects.
+- A label is a key-value pair without any predefined meaning that can be attached to the object.
+- Labels are similar to tags in AWS or git where you use a name to quick reference.
+- So you are free to choose labels as you need it to refer an environment which is used for dev or testing or production refer a product group like
+   Department A, Department B.
+- Multiple labels can be added to a single object.
+
 ## EXAMPLE OF LABELS
 
 ```
 kind: Pod
 apiVersion: v1
 metadata:
-  name: delhipod
+  name: meerutpod
   labels:                                                   
     env: development
     class: pods
@@ -12,7 +21,7 @@ spec:
     containers:
        - name: c00
          image: ubuntu
-         command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+         command: ["/bin/bash", "-c", "while true; do echo Hello-Word; sleep 5 ; done"]
 ```
 
 # Node Selector

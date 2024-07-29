@@ -10,6 +10,10 @@
 ## EXAMPLE OF LABELS
 
 ```
+vi Pod5.yml
+```
+
+```
 kind: Pod
 apiVersion: v1
 metadata:
@@ -22,6 +26,48 @@ spec:
        - name: c00
          image: ubuntu
          command: ["/bin/bash", "-c", "while true; do echo Hello-Word; sleep 5 ; done"]
+```
+
+### To exit -
+
+```
+:wq
+``` 
+
+```
+kubectl apply -f Pod5.yml
+```
+
+```
+kubectl get pods --show-labels
+```
+
+### Now if you want to add a label to an existing pod ->
+
+```
+kubectl label pods myPod myName=test
+```
+```
+kubectl get pods --show-labels
+```
+
+### Now list pods matching a label ->
+```
+kubectl get pods -l env=development
+```
+
+### Now give a list, where "development" label is not present ->
+```
+kubectl get pods -l env!=development
+```
+
+### Now if you want to delete pod using label
+
+```
+kubectl delete pod -l env=development
+```
+```
+kubectl get pods
 ```
 
 # Node Selector

@@ -142,7 +142,14 @@ Kubectl rollout history deployment mydeployments
 Kubectl rollout undo deploy/mydeployments
 ```
 
-
+## Failed Deployment 
+Your deployment may get stuck trying to deploy its newest Replicaset without ever Completing. This can occur due to some of the following factors. 
+- 1 Insufficient Quota 
+- 2 Readiness probe failures 
+- 3 Image pull errors 
+- 4 Insufficient permission 
+- 5 Limit Ranges 
+- 6 Application runtime misconfiguration
 
 
 

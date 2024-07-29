@@ -55,3 +55,17 @@ kubectl delete pod pod-name
 ```
 kudectl get pods
 ```
+#### To scale up
+
+```
+kudectl scale --replicas=8 rc -l myname=CKNitin
+```
+
+#### To scale down
+
+```
+kudectl scale --replicas=2 rc -l myname=CKNitin
+```
+
+
+

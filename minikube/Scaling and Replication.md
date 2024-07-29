@@ -6,3 +6,9 @@
 - Load Balancing: Having multiple versions of a container enables you to easily send traffic to different instances to prevent overloading of a single instance or node.
 - Scaling - When load does become too much for the number of existing instances, Kubernetes enables you to easily scale up your application, adding additional instances as needed. 
 - Rolling updates: Updates to a Service by replacing pods one by one.
+
+## Replication Controller 
+- A replication Controller is a Object that enables you to easily Create multiple pods, then make sure that number of pods always exist.
+- If a pod created using RC will be automatically replaced if they does Crash, failed, or terminated
+- RC is recommended if you just want to make sure 1 pod is always running, even after system reboots.
+- You Can run the RC with 1 replica & the RC will make sure the pod is always running.

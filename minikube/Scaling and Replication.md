@@ -68,4 +68,31 @@ kudectl scale --replicas=2 rc -l myname=CKNitin
 ```
 
 
+# Replica Set 
+- Replica Set is a next generation Replication Controller.
+- The replication Controller only supports Equality-based Selector whereas the replica set Supports set-based Selector ie filtering according to set of Values
+- Replicaset rather than the Replication Controller is used by other objects like deployment.
+
+```
+kind: ReplicaSet                                    
+apiVersion: apps/v1                            
+metadata:
+  name: myrs
+spec:
+  replicas: 2  
+  selector:                  
+    matchExpressions:                             # these must match the labels
+      - {key: myname, operator: In, values: [test, test2, test3]}
+      - {key: env, operator: NotIn, values: [production]}
+  template:      
+    metadata:
+      name: testpod7
+      labels:              
+        myname: test
+    spec:
+     containers:
+       - name: c00
+         image: ubuntu
+         command: ["/bin/bash", "-c", "while true; do echo Hello World; sleep 5 ; done"]
+```
 

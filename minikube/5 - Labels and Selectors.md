@@ -1,5 +1,6 @@
 ## EXAMPLE OF LABELS
 
+```
 kind: Pod
 apiVersion: v1
 metadata:
@@ -12,10 +13,12 @@ spec:
        - name: c00
          image: ubuntu
          command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+```
 
 ## NODE SELECTOR EXAMPLE
 
-```kind: Pod
+```
+kind: Pod
 apiVersion: v1
 metadata:
   name: nodelabels
@@ -27,6 +30,7 @@ spec:
          image: ubuntu
          command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
     nodeSelector:                                         
-       hardware: t2-medium ```
+       hardware: t2-medium 
+```
 
 

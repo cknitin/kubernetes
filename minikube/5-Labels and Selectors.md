@@ -80,9 +80,24 @@ kubectl get pods
 - A label selector can be made of multiple requirements which are comma separated.
 
 ### Equality Based (=, !=)
-  name: crictl
-  class: nodes
-  project: test
+ - name: crictl
+ - class: nodes
+ - project: test
+
+### Set Based (in, notin and exists)
+```
+env in (test, dev)
+env in (test, dev)
+env notin (team1, team2)
+```
+
+K8s also supports set based selectors i.e. match multiple values
+
+```
+kubectl get pods -l 'env in (dev, test)'
+kubectl get pods -l 'env notin (dev, test)'
+kubectl get pods -l class=pods, myName=CKALIN
+```
 
 # Node Selector
 

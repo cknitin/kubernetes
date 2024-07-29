@@ -111,6 +111,23 @@ spec:
 
 ```
 
+To check deployment was Greated or not 
+```
+ Kubectl get deploy
+```
+ 
+To Check, how deployment creates RS & pods
+```
+ Kubectl describe deploy mydeploymen
+``` 
+```
+Kubectl get rs 
+```
+To scale up or scale down 
+```
+kubectl scale --replicas=1 deploy mydeployments
+```
+
 
 
 

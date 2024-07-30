@@ -1,3 +1,15 @@
+# Kubernetes Networking, Services, Nodeport & Volumes
+
+## Kubernetes Networking addresses four Concerns:
+
+- 1. Containers within a pod use networking to communicate via loopback
+- 2. Cluster Networking provides Communication between different Pods.
+- 3. The Service resources lets you expose an application running in Pods to be reachable from Outside your Cluster.
+- 4. You can also use services to publish Services only for Consumption inside your Cluster.
+- 5. Container to Container communication on Same pod happens through localhost within the Containers.
+
+
+## Lab
 
 > Install Docker
 ```

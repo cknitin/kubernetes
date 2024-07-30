@@ -21,9 +21,7 @@ $  minikube start --vm-driver=none
 $  minikube status
 ```
 
-=================================
-KUBERNETES NETWORKING
-=================================
+> KUBERNETES NETWORKING
 
 ```
 kind: Pod
@@ -80,9 +78,7 @@ spec:
 $ kubectl get svc
 ```
 
-===========================
-volume labs
-===========================
+> volume labs
 
 ```
 apiVersion: v1
@@ -108,9 +104,7 @@ spec:
     emptyDir: {}
 ```
 
-========================
-HOST PATH
-========================
+> HOST PATH
 
 ```
 apiVersion: v1
@@ -129,3 +123,4 @@ spec:
   - name: testvolume
     hostPath:
       path: /tmp/data 
+```

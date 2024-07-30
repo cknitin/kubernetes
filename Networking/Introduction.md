@@ -42,28 +42,6 @@ vi pod1.yml
 ```
 
 ```
-kubectl apply -f pod1.yml
-
-kubectl get pods
-```
-To enter inside POD
-
-```
-kubectl exec testpod -it -c c00 -- bin/bash
-```
-install cur to communicate
-
-```
-apt update && apt install curl
-```
-
-```
-curl localhost:80
-```
-
-> Lab 2
-
-```
 kind: Pod
 apiVersion: v1
 metadata:
@@ -78,6 +56,41 @@ spec:
       ports:
        - containerPort: 80
 ```
+
+```
+kubectl apply -f pod1.yml
+
+kubectl get pods
+```
+To enter inside POD and container
+
+```
+kubectl exec testpod -it -c c00 -- bin/bash
+```
+install curl to communicate
+
+```
+apt update && apt install curl
+```
+
+```
+curl localhost:80
+```
+
+To exit from pod and container
+```
+exit
+```
+
+TO delete POD
+
+```
+kubectl delete -f pod1.yml
+```
+
+
+
+# Lab 2
 
 ```
 kind: Deployment

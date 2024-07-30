@@ -22,6 +22,6 @@ Problem - This leads to a problem: if some set of Pods (Call them backends) prov
     - Cluster IP
     - NodePort
     - Load Balancer: Created by cloud Providers that will route external traffic to every node on the Nodeport. (eg. ELB on AWS) 
-- Headless → Creates several endpoints that are used to produce DNS Records. Each DNS record is bound to a Pod. 
+    - Headless → Creates several endpoints that are used to produce DNS Records. Each DNS record is bound to a Pod. 
 - By default It Service Can run only between ports 30,000 - 32767
 - The set of pods targeted by a service is usually determined by a selector.

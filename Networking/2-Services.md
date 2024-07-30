@@ -12,3 +12,8 @@ Problem - This leads to a problem: if some set of Pods (Call them backends) prov
 - Service allows Clients to reliably Connect to the Containers running in the Pod using the VIP. 
 - The VIP is not an actual IP Connected to a network interface, but its purpose is purely to forward traffic to One or more pods. 
 - Kube proxy is the One which keeps the mapping between the VIP and the pods upto date, which Queries the API Server to learn about new Services in the Cluster
+
+- Although each pod has a unique IP address, those IP's are not exposed outside the Cluster.
+- Services helps to expose the VIP mapped to the pods & allows application to receive traffic. 10.1.1.1
+- Labels are used to select which are the pods to be put under a service.
+- Creating a service will create an endpoint to access the pods/application in it.

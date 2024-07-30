@@ -25,3 +25,7 @@ Problem - This leads to a problem: if some set of Pods (Call them backends) prov
     - Headless → Creates several endpoints that are used to produce DNS Records. Each DNS record is bound to a Pod. 
 - By default It Service Can run only between ports 30,000 - 32767
 - The set of pods targeted by a service is usually determined by a selector.
+
+## Cluster IP 
+- Exposes VIP only reachable from within the Cluster.
+- Mainly used to communicate between Components of Microservices.

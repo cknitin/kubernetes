@@ -9,7 +9,7 @@
 - 5. Container to Container communication on Same pod happens through localhost within the Containers.
 
 
-## Lab
+## Lab 1
 
 > Install Docker
 ```
@@ -51,6 +51,17 @@ To enter inside POD
 ```
 kubectl exec testpod -it -c c00 -- bin/bash
 ```
+install cur to communicate
+
+```
+apt update && apt install curl
+```
+
+```
+curl localhost:80
+```
+
+> Lab 2
 
 ```
 kind: Pod

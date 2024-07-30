@@ -3,6 +3,43 @@
 - Makes a service accessible from outside the cluster 
 - Expose the service on the same port of each selected node in the cluster using NAT
 
+## Lab
+
+```
+vi nodport.yml
+```
+
+```
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: mydeployments
+spec:
+   replicas: 1
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     name: deployment
+   template:
+     metadata:
+       name: testpod1
+       labels:
+         name: deployment
+     spec:
+      containers:
+        - name: c00
+          image: httpd
+          ports:
+          - containerPort: 80
+```
+
+```
+kudectl apply -f nodeport.yml
+
+kudectl get pods
+```
+
+
+
 
 
 

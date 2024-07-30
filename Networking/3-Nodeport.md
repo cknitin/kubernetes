@@ -57,7 +57,15 @@ spec:
 kubectl apply -f service.yml
 ```
 
+```
+kubectl get svc
+```
 
+```
+kubectl describe svc demoservice
+```
+
+Allow the port in AWS if not allowed, if all traffic is allowed then no need to allow this port
 
 
 

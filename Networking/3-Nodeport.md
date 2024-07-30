@@ -37,7 +37,25 @@ kudectl apply -f nodeport.yml
 
 kudectl get pods
 ```
+Now create a service.yml
 
+```
+kind: Service                            # Defines to create Service type Object
+apiVersion: v1
+metadata:
+  name: demoservice
+spec:
+  ports:
+    - port: 80                           # Containers port exposed
+      targetPort: 80                     # Pods port
+  selector:
+    name: deployment                     # Apply this service to any pods which has the specific label
+  type: NodePort                        # Specifies the service type i.e ClusterIP or NodePort
+```
+
+```
+kubectl apply -f service.yml
+```
 
 
 

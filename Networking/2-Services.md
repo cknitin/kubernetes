@@ -70,6 +70,10 @@ kubectl get pods -o wide
 Now create a service 
 
 ```
+vi service.yml
+```
+
+```
 kind: Service                            # Defines to create Service type Object
 apiVersion: v1
 metadata:
@@ -84,6 +88,14 @@ spec:
 ```
 
 ```
+kubectl apply service.yml
+
 $ kubectl get svc
 ```
+
+Now access the pod
+
+curl <ip-address>:80
+
+Now you can delete the pod and a new pod will be create bcoz of replicaset and this new pod will have same static IP
 

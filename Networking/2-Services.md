@@ -30,6 +30,45 @@ Problem - This leads to a problem: if some set of Pods (Call them backends) prov
 - Exposes VIP only reachable from within the Cluster.
 - Mainly used to communicate between Components of Microservices.
 
+First create a POD
+
+```
+vi deployhttpd.yml
+```
+
+```
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: mydeployments
+spec:
+   replicas: 1
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     name: deployment
+   template:
+     metadata:
+       name: testpod1
+       labels:
+         name: deployment
+     spec:
+      containers:
+        - name: c00
+          image: httpd
+          ports:
+          - containerPort: 80
+```
+
+```
+kubectl apply -f deployhttpd.yml
+
+kubectl get pods
+
+kubectl get pods -o wide
+```
+
+Now create a service 
+
 ```
 kind: Service                            # Defines to create Service type Object
 apiVersion: v1

@@ -97,6 +97,10 @@ Now try to established Communication between two different Pods within same mach
 
 - By default Pod's IP will not be accessible Outside the node.
 
+Objective: POD to POD communication
+
+One node can have 2 POSs and each POD has one container, POD to POD communication
+
 ```
 vi pod2.yml
 ```

@@ -29,3 +29,22 @@ Problem - This leads to a problem: if some set of Pods (Call them backends) prov
 ## Cluster IP 
 - Exposes VIP only reachable from within the Cluster.
 - Mainly used to communicate between Components of Microservices.
+
+```
+kind: Service                            # Defines to create Service type Object
+apiVersion: v1
+metadata:
+  name: demoservice
+spec:
+  ports:
+    - port: 80                           # Containers port exposed
+      targetPort: 80                     # Pods port
+  selector:
+    name: deployment                     # Apply this service to any pods which has the specific label
+  type: ClusterIP                        # Specifies the service type i.e ClusterIP or NodePort
+```
+
+```
+$ kubectl get svc
+```
+

@@ -50,7 +50,7 @@ spec:
   containers:
     - name: c00
       image: ubuntu
-      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Pod; sleep 5 ; done"]
     - name: c01
       image: httpd
       ports:
@@ -89,7 +89,6 @@ kubectl delete -f pod1.yml
 ```
 
 
-
 ## Lab 2
 
 Now try to established Communication between two different Pods within same machine.
@@ -97,6 +96,60 @@ Now try to established Communication between two different Pods within same mach
 - Pod to Pod Communication on same worker node happens through Pod IP
 
 - By default Pod's IP will not be accessible Outside the node.
+
+```
+vi pod2.yml
+```
+
+```
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod1
+spec:
+  containers:
+    - name: c01
+      image: nginx
+      ports:
+       - containerPort: 80
+```
+
+```
+kubectl apply -f pod1.yml
+```
+
+```
+vi pod3.yml
+```
+
+```
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod2
+spec:
+  containers:
+    - name: c01
+      image: nginx
+      ports:
+       - containerPort: 80
+```
+
+```
+kubectl apply -f pod1.yml
+```
+
+```
+kubectl get pods
+```
+
+```
+kubectl get pods -o wide
+```
+
+```
+curl 147.25.68.52:80
+```
 
 ```
 kind: Deployment
@@ -122,20 +175,30 @@ spec:
 ```
 
 ```
-kind: Service                             # Defines to create Service type Object
+kubectl apply -f pod1.yml
+
+kubectl get pods
+```
+
+## Lab 3
+
+```
+kind: Service                            # Defines to create Service type Object
 apiVersion: v1
 metadata:
   name: demoservice
 spec:
   ports:
-    - port: 80                               # Containers port exposed
+    - port: 80                           # Containers port exposed
       targetPort: 80                     # Pods port
   selector:
-    name: deployment                    # Apply this service to any pods which has the specific label
-  type: ClusterIP                       # Specifies the service type i.e ClusterIP or NodePort
+    name: deployment                     # Apply this service to any pods which has the specific label
+  type: ClusterIP                        # Specifies the service type i.e ClusterIP or NodePort
 
 $ kubectl get svc
 ```
+
+## Lab 4
 
 > volume labs
 
@@ -163,6 +226,7 @@ spec:
     emptyDir: {}
 ```
 
+## Lab 5
 > HOST PATH
 
 ```

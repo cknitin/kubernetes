@@ -90,7 +90,13 @@ kubectl delete -f pod1.yml
 
 
 
-# Lab 2
+## Lab 2
+
+Now try to established Communication between two different Pods within same machine.
+
+- Pod to Pod Communication on same worker node happens through Pod IP
+
+- By default Pod's IP will not be accessible Outside the node.
 
 ```
 kind: Deployment

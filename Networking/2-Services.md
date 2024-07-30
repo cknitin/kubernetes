@@ -95,7 +95,7 @@ $ kubectl get svc
 
 Now access the pod
 
-curl <ip-address>:80
+curl (ip-address):80
 
 Now you can delete the pod and a new pod will be create bcoz of replicaset and this new pod will have same static IP
 

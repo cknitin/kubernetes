@@ -35,6 +35,8 @@ $  minikube status
 
 > KUBERNETES NETWORKING
 
+Objective: Container to Container communication on Same pod happens through localhost within the Containers.
+
 ```
 kind: Pod
 apiVersion: v1

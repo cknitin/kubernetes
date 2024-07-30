@@ -38,6 +38,21 @@ $  minikube status
 Objective: Container to Container communication on Same pod happens through localhost within the Containers.
 
 ```
+vi pod1.yml
+```
+
+```
+kubectl apply -f pod1.yml
+
+kubectl get pods
+```
+To enter inside POD
+
+```
+kubectl exec testpod -it -c c00 -- bin/bash
+```
+
+```
 kind: Pod
 apiVersion: v1
 metadata:

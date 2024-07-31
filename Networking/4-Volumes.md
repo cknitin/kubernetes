@@ -22,3 +22,108 @@ Some eg of Volume types are:
 - Containers in the pod Can all read and write the same files in the emptydir Volume, though that Volume Can be mounted at the same or different paths in each Containers.
 - when a pod is removed from a node for any reason, the data in the emptydir is deleted forever. 
 - A Container crashing does not remove a Pod from a node, so the data in an emptyDir volume is safe across Container Crashes.
+
+
+### Lab
+
+## Lab 4
+
+> volume labs
+
+```
+vi emptydir.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myvolemptydir
+spec:
+  containers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "sleep 15000"]
+    volumeMounts:                                    # Mount definition inside the container
+      - name: xchange
+        mountPath: "/tmp/xchange"          
+  - name: c2
+    image: centos
+    command: ["/bin/bash", "-c", "sleep 10000"]
+    volumeMounts:
+      - name: xchange
+        mountPath: "/tmp/data"
+  volumes:                                                   
+  - name: xchange
+    emptyDir: {}
+```
+
+```
+kubectl apply -f emptydir.yml
+```
+
+```
+kubectrl get pods
+```
+
+To enter inside POD and container one i.e. c1
+```
+kubectl exec myvolemptydir -c c1 -it -- /bin/bash
+```
+
+```
+cd /tmp
+
+ls
+```
+you will see a volume with name xchange
+
+```
+cd xchange
+
+vi abc.yml
+
+```
+
+add some text
+
+```
+exit
+```
+
+Now enter in second container
+
+To enter inside POD and container c2
+```
+kubectl exec myvolemptydir -c c2 -it -- /bin/bash
+```
+
+```
+cd /tmp
+ls
+
+cd data
+
+ls
+```
+
+you will see abc.yml from container two c2
+
+now edit abc.yml
+```
+vi abc.yml
+```
+add some text 
+```
+:wq
+```
+Go inside the c1 again
+```
+kubectl exec myvolemptydir -c c1 -it -- /bin/bash
+```
+
+```
+cat /tmp/xchange/abc.yml
+```
+
+and see the updated output

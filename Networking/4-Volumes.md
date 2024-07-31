@@ -14,3 +14,11 @@ Some eg of Volume types are:
 - Cloud provider-specific types like awselasticblockstore, azuredisk 
 - distributed file system types, for example glusterfs or Cephts 
 - Special purpose types like seeret, gitrepo
+
+### EmptyDir 
+- Use this when we want to share contents between multiple Containers on the Same pod & not to the host machine.
+- An emptydir volume is first Created when a pod is assigned to a node, and exist as long as that pod is running on that node.
+- As the name says, it is initially empty
+- Containers in the pod Can all read and write the same files in the emptydir Volume, though that Volume Can be mounted at the same or different paths in each Containers.
+- when a pod is removed from a node for any reason, the data in the emptydir is deleted forever. 
+- A Container crashing does not remove a Pod from a node, so the data in an emptyDir volume is safe across Container Crashes.

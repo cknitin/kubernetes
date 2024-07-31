@@ -24,9 +24,7 @@ Some eg of Volume types are:
 - A Container crashing does not remove a Pod from a node, so the data in an emptyDir volume is safe across Container Crashes.
 
 
-### Lab
-
-## Lab 4
+## Lab
 
 > volume labs
 

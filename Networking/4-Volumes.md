@@ -24,7 +24,7 @@ Some eg of Volume types are:
 - A Container crashing does not remove a Pod from a node, so the data in an emptyDir volume is safe across Container Crashes.
 
 
-## Lab
+## Lab 1
 
 > volume labs
 
@@ -125,3 +125,67 @@ cat /tmp/xchange/abc.yml
 ```
 
 and see the updated output
+
+## Hostpath 
+- Use this when we want to access the Content of a Pod/Container from hostmachine. 
+- A hostpath Volume mounts a file or directory from the hast node's filesystem into your pod.
+
+```
+vi hostpath.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myvolhostpath
+spec:
+  containers:
+  - image: centos
+    name: testc
+    command: ["/bin/bash", "-c", "sleep 15000"]
+    volumeMounts:
+    - mountPath: /tmp/hostpath
+      name: testvolume
+  volumes:
+  - name: testvolume
+    hostPath:
+      path: /tmp/data 
+```
+
+```
+kubectl apply -f hostpath.yml
+```
+
+```
+kubectl get pods
+```
+
+```
+ls /tmp
+```
+you will see /data
+
+
+```
+To go inside host
+kubectl exec myvolhostpath -- ls /tmp/host
+```
+
+Create file in Host using below cmd
+```
+echo "Hello Kubertenes" > helloMyFile
+pwd
+ls
+```
+
+
+now go inside host path
+```
+kubectl exec myvolhostpath -- ls /tmp/hostpath
+```
+
+```
+cat helloMyFile
+```
+

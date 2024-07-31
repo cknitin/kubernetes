@@ -161,34 +161,6 @@ kubectl apply -f pod1.yml
 kubectl get pods
 ```
 
-## Lab 4
-
-> volume labs
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: myvolemptydir
-spec:
-  containers:
-  - name: c1
-    image: centos
-    command: ["/bin/bash", "-c", "sleep 15000"]
-    volumeMounts:                                    # Mount definition inside the container
-      - name: xchange
-        mountPath: "/tmp/xchange"          
-  - name: c2
-    image: centos
-    command: ["/bin/bash", "-c", "sleep 10000"]
-    volumeMounts:
-      - name: xchange
-        mountPath: "/tmp/data"
-  volumes:                                                   
-  - name: xchange
-    emptyDir: {}
-```
-
 ## Lab 5
 > HOST PATH
 

@@ -109,11 +109,11 @@ ls
 
 you will see abc.yml from container two c2
 
-now edit abc.yml
+now edit abc.yml, add some text 
 ```
 vi abc.yml
 ```
-add some text 
+To exit vi
 ```
 :wq
 ```

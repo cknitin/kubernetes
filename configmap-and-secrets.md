@@ -1,1 +1,0 @@
-# Kubernetes configmap and secrets

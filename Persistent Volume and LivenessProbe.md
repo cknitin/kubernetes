@@ -19,3 +19,105 @@
     - The nodes on which Pods are running must be aws EC2 instances.
     - Those instances need to be in the Same region and Availability Zone as the EBS Volume.
     - EBS Only Supports a single EC2 instance mounting a Volume.
+
+# Lab 1
+
+> Install Docker
+```
+$  sudo apt update && apt -y install docker.io
+```
+
+> Install kubectl
+```
+$ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl &&   chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+```
+
+> Install Minikube
+```
+$  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+```
+
+> Start Minikube
+```
+$  apt install conntrack
+$  minikube start --vm-driver=none
+$  minikube status
+```
+Now create volume in AWS and attach it with below yml
+
+```
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: myebsvol
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  awsElasticBlockStore:
+    volumeID:           # YAHAN APNI EBS VOLUME ID DAALO
+    fsType: ext4
+```
+
+Now create a volume claim yml file
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myebsvolclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+Create POD
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pvdeploy
+spec:
+  replicas: 1
+  selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: mypv
+  template:
+    metadata:
+      labels:
+        app: mypv
+    spec:
+      containers:
+      - name: shell
+        image: centos
+        command: ["bin/bash", "-c", "sleep 10000"]
+        volumeMounts:
+        - name: mypd
+          mountPath: "/tmp/persistent"
+      volumes:
+        - name: mypd
+          persistentVolumeClaim:
+            claimName: myebsvolclaim
+
+```
+
+
+## Health check/LivenessProbe
+- A Pod is considered ready when all of its Containers are ready.
+- In Order to Verify if a Container in a Pod is Healthy and ready to serve traffic, Kubernetes provides for a range of healthy checking mechanism.
+- Health Checks or probes are Carried Out by the Kubelet to determine When to restart a Container (For liveness) and used by services and deployments to determine if a pod should receive traffic.
+
+  ### for-eg- 
+  Liveness Probes could Catch a deadlock, where an application is running, but unable to make progress. Restarting a Container in such a State can help to make the application more available despite bugs. 
+
+- One use of readiness probes is to Control which pods are used as backends for services When a pod is not ready, it is removed from Service load Balancers. 
+- for running healthchecks, we would use cmds specific to the application. 
+- If the cmd succeeds, it returns O, and the Kubelet Considers the Container to be alive and healthy. If the Command returns a non-zero value, the Kubelet Kills the Pod and recreate it.
+
+

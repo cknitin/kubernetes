@@ -121,3 +121,30 @@ spec:
 - If the cmd succeeds, it returns O, and the Kubelet Considers the Container to be alive and healthy. If the Command returns a non-zero value, the Kubelet Kills the Pod and recreate it.
 
 
+# Lab 2
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: mylivenessprobe
+spec:
+  containers:
+  - name: liveness
+    image: ubuntu
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthy; sleep 1000
+    livenessProbe:                                       # define the health check
+      exec:
+        command:                                         # command to run periodically
+        - cat                
+        - /tmp/healthy
+      initialDelaySeconds: 5                             # Wait for the specified time before it runs the first probe
+      periodSeconds: 5                                   # Run the above command every 5 sec
+      timeoutSeconds: 30                              
+
+```

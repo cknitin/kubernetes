@@ -46,6 +46,10 @@ $  minikube status
 Now create volume in AWS and attach it with below yml
 
 ```
+vi mypv.yml
+```
+
+```
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -61,7 +65,19 @@ spec:
     fsType: ext4
 ```
 
+```
+kubectl apply -f mypv.yml
+```
+
+```
+kubectl get pv
+```
+
 Now create a volume claim yml file
+
+```
+vi mypvc.yml
+```
 
 ```
 apiVersion: v1
@@ -76,7 +92,15 @@ spec:
       storage: 1Gi
 ```
 
+```
+kubectl apply -f mypvc.yml
+```
+
 Create POD
+
+```
+vi deployment.yml
+```
 
 ```
 apiVersion: apps/v1
@@ -106,6 +130,69 @@ spec:
             claimName: myebsvolclaim
 
 ```
+
+```
+kubectl apply -f deployment.yml
+```
+
+> To get deploy object
+```
+kubectl get deploy
+```
+
+> To get ReplicaSet
+
+```
+kubectl get rs
+```
+
+> To get Pods
+
+```
+kubectl get pods
+```
+
+```
+kubectl exec -pod-name- it -- /bin/bash
+```
+
+```
+cd /tmp/persistent
+
+ls
+```
+
+```
+vi text
+
+Hello Volumne
+
+:wq
+
+ls
+
+exist
+
+delete pod -pode-name-
+```
+
+```
+kubectl get pods
+```
+
+```
+kubectl exec -new-pod-name- it -- /bin/bash
+```
+
+```
+cd /tmp/persistent
+
+ls
+
+cat test
+```
+
+
 
 
 ## Health check/LivenessProbe

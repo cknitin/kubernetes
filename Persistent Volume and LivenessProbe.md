@@ -14,6 +14,7 @@
 
 ## Elastic Block Store AWS (EBS 
 - An aws EBS volume mounts an AWS (EBS) V'olume into your pod. Unlike empty Dir, which is erased when a pod is removed, the contents of an EBS Volume are preserved and the Volume is merely Unmounted.
+
   - There are some Restrictions:
     - The nodes on which Pods are running must be aws EC2 instances.
     - Those instances need to be in the Same region and Availability Zone as the EBS Volume.

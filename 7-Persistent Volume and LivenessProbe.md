@@ -193,8 +193,6 @@ cat test
 ```
 
 
-
-
 ## Health check/LivenessProbe
 - A Pod is considered ready when all of its Containers are ready.
 - In Order to Verify if a Container in a Pod is Healthy and ready to serve traffic, Kubernetes provides for a range of healthy checking mechanism.
@@ -209,6 +207,10 @@ cat test
 
 
 # Lab 2
+
+```
+vi myliveness.yml
+```
 
 ```
 apiVersion: v1
@@ -235,3 +237,36 @@ spec:
       timeoutSeconds: 30                              
 
 ```
+:wq
+
+```
+kubectl apply -f myliveness.yml
+```
+
+```
+kubectl describe pod mylivenessprobe
+```
+
+```
+kubectl exec --podename-- it -- /bin/bash
+```
+
+```
+cat /tmp/healthy
+
+echo $?
+```
+
+output will be 0 (zero) if all good
+
+```
+Remove file
+
+rm /tm/healthy
+
+cat /tmp/healthy
+
+echo $?
+
+```
+

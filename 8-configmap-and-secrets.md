@@ -9,25 +9,33 @@
 - This is where Kubernetes Configmap comes handy. It allows us to handle Configuration files much more efficiently.
 
 
-LEC 53 NOTES TECHNICAL GUFTGU
-====================
- Install Docker
+# Lab
+> Install Docker
+```
 $  sudo apt update && apt -y install docker.io
+```
 
- Install kubectl
+>  Install kubectl
+```
 $  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl &&   chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+```
 
- Install Minikube
+> Install Minikube
+```
 $  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+```
 
- Start Minikube
+> Start Minikube
+```
 $  apt install conntrack
 $  minikube start --vm-driver=none
 $  minikube status
-====================================================================
-configmap
-====================================================================
- apiVersion: v1
+```
+
+## configmap
+
+```
+apiVersion: v1
 kind: Pod
 metadata:
   name: myvolconfig
@@ -46,9 +54,10 @@ spec:
        items:
        - key: sample.conf
          path: sample.conf
+```
 
-==============================================================================
 
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -64,14 +73,19 @@ spec:
         configMapKeyRef:
           name: mymap      # name of the config created
           key: sample.conf            
------------------=========================================================
+
+```
+
+```
 echo "root" > username.txt; echo "password" > password.txt
+```
 
+```
 kubectl create secret generic mysecret --from-file=username.txt --from-file=password.txt
+```
 
 
-
-
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -88,3 +102,4 @@ spec:
   - name: testsecret
     secret:
        secretName: mysecret  
+```

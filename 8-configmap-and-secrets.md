@@ -132,6 +132,12 @@ cat mysample.conf
 ```
 
 
+# Lab - using env variable
+
+```
+vi deployenv.yml
+```
+
 ```
 apiVersion: v1
 kind: Pod
@@ -148,6 +154,15 @@ spec:
         configMapKeyRef:
           name: mymap      # name of the config created
           key: sample.conf            
+
+```
+
+```
+kubectl apply -f deployenv.yml
+
+kubectl exec myvolconfig -it /bin/bash
+
+env
 
 ```
 

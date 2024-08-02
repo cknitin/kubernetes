@@ -21,4 +21,9 @@ A mechanism to attach authorization and policy to a subsection of the cluster.
 - Let us assume we have shared K8s Cluster for Dev and production use Cases. 
 - The dev team would like to maintain a space in the cluster where they can get a view on the list of Pods, Services 
   and Deployments they use to build and run their application. In this, no restrictions are put on who can or Cannot modify resources to enable agile development. 
-- for prod team we can enforce Strict procedure on who Can or Cannot manipulate the Set of Pods, Services and deploymente Cmd+ Kubech get namespaces
+- for prod team we can enforce Strict procedure on who Can or Cannot manipulate the Set of Pods, Services and deploymente 
+
+Cmd 
+```
+Kubech get namespaces
+```

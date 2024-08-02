@@ -56,7 +56,35 @@ $  minikube start --vm-driver=none
 $  minikube status
 ```
 
-## configmap
+> Create mysample.conf
+
+```
+vi mysample.conf
+```
+This is my config file.  
+
+:wq
+
+> To create configmap object
+
+```
+kubectl create  configmap  mymap --from=mysample.conf 
+
+```
+
+> To get config mao file
+
+```
+kubectl get configmap
+```
+
+> To see what in conf file
+```
+kubectl describe configmap mymap
+```
+
+
+## To create a POD deployconfigmap.yml and see configmap in it
 
 ```
 apiVersion: v1
@@ -76,8 +104,31 @@ spec:
     configMap:
        name: mymap   # this should match the config map name created in the first step
        items:
-       - key: sample.conf
-         path: sample.conf
+       - key: mysample.conf
+         path: mysample.conf
+```
+
+```
+kubectl apply -f deployconfigmap.yml
+```
+
+> go inside container
+
+```
+kubectl exec myvolconfig -it /bin/bash
+
+cd /tmp/
+
+ls
+
+ls -l
+
+cd config
+
+ls
+
+cat mysample.conf
+
 ```
 
 

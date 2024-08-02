@@ -100,3 +100,14 @@ kubectl get pods -n dev
 ```
 kubectl delete -f pod.yml-n dev
 ```
+
+> To set default namespace
+
+```
+$ kubectl config set-context $(kubectl config current-context) --namespace=dev
+```
+
+> To konw where K8s finding the pod
+```
+$ kubectl config view | grep namespace:
+```

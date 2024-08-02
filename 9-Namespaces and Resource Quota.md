@@ -27,3 +27,76 @@ Cmd
 ```
 Kubech get namespaces
 ```
+
+
+# Lab
+
+> Set up k8s
+
+```
+ Install Docker
+$  sudo apt update && apt -y install docker.io
+
+ Install kubectl
+$  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl &&   chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+
+ Install Minikube
+$  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+ Start Minikube
+$  apt install conntrack
+$  minikube start --vm-driver=none
+$  minikube status
+
+```
+
+>  To create namespace mynamespace.yml
+
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+   name: dev
+   labels:
+     name: dev
+```
+
+```
+kubectl apply mynamespace.yml
+```
+
+> Create a POD
+
+```
+vi pod.yml
+
+
+kind: Pod                              
+apiVersion: v1                     
+metadata:                           
+  name: testpod                  
+spec:                                    
+  containers:                      
+    - name: c00                     
+      image: ubuntu              
+      command: ["/bin/bash", "-c", "while true; do echo Technical Guftgu; sleep 5 ; done"]
+  restartPolicy: Never       
+
+```
+
+> Create POD in dev namespace
+
+```
+kudectl apply -f pod.yml -n dev
+
+kubectl get pods
+
+kubectl get pods -n dev
+
+```
+
+> To delete
+
+```
+kubectl delete -f pod.yml-n dev
+```

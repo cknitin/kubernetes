@@ -166,14 +166,30 @@ env
 
 ```
 
+# Lab - using secret
+
 ```
 echo "root" > username.txt; echo "password" > password.txt
+
+cat username.txt
+
+cat password.txt
 ```
+
+> To save in secret
 
 ```
 kubectl create secret generic mysecret --from-file=username.txt --from-file=password.txt
+
+kubectl get secret
+
 ```
 
+> To create pod 
+
+```
+vi myvolsecret.yml
+```
 
 ```
 apiVersion: v1
@@ -192,4 +208,22 @@ spec:
   - name: testsecret
     secret:
        secretName: mysecret  
+```
+
+```
+kubectl apply -f myvolsecret.yml
+
+kubectl get pods
+
+kubectl exec  myvolsecret -it /bin/bash
+
+cd /tmp
+
+ls
+
+cd mysecrets
+
+ls
+
+cat password.txt
 ```

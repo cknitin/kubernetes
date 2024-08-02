@@ -8,6 +8,12 @@
 
 - This is where Kubernetes Configmap comes handy. It allows us to handle Configuration files much more efficiently.
 
+- Configmaps are useful for storing and sharing non-sensitive, unencrypted Configuration information. Use Secret Otherwise.
+
+- Configmap can be used to store fine-grained information like individual properties or entire Configfiles.
+
+- Configmap are not intended to act as a replacement for a properties file.
+
 
 # Lab
 > Install Docker

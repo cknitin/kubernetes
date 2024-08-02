@@ -15,6 +15,24 @@
 - Configmap are not intended to act as a replacement for a properties file.
 
 
+
+### Configmap can be accessed in following ways:
+
+- 1. As environment variables
+- 2. As volumes in the pod Kubectl Create Configmap <mapname> --from-file=<file to read> abc conf
+
+# SECRETS
+
+You don't want sensitive information such as a database password or an API key kept around in clear text.
+
+- Secrets provide you with a mechanism to use such information in a safe and reliable way with the following properties: -> Secrets are namespaced objects, that is exist in the context of a namespace.
+
+- You can access them via a volume or an environment variable from a container running in a pod. The secret data on nodes is stored in tmpfs volumes (tmpfs is a file system which keeps all files in virtual memory. Everything in tmpfs is temporary in the sense that no files will be created on your hard drive. -> A per-secret size limit of 1MB exul -> The API server stores secrets as plaintext in etcd. Secrets can be created
+
+- 1. from a text file
+- 2. from a yaml file
+
+
 # Lab
 > Install Docker
 ```

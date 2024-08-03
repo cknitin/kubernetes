@@ -13,6 +13,27 @@
 - During each period, the Controller manager Queries the resource Utilization against the metrics specified in each horizontalPod Autoscaler definition
 
 
+More points
+
+- For per-pod resource metrics (like CPU), the Controller fetches the metrics from the resource metrics API for each pod targeted by the Horizontal Pod Autoscaler.
+
+-  Then if a target utilization Value is set, the Controller Calculates the Utilization value as a percentage of the Equivalent resource request on the Containers in each pod. 
+
+- If a target raw-value is set, the raw metric Values are used directly. The Controller then takes the mean of the Utilization on the raw value across all targeted pods, and produces a ratio used to scale the number of desired replicas. 
+
+- Cooldown period to wait before another downscale Operation Can be performed Controlled by 
+
+```
+--horizontal-pod-autoscaler-downtime-stabilization flag (Default Value of 5 min) 
+```
+
+→ Metric Server needs to be deployed in the Cluster to provide metrics via the resource metrics API. 
+
+```
+---kubelet-insecure-tts Kubecht autoscale deployment mydeploy --cpu-percent=20 --min=1 --max=10
+```
+
+
 # Lab
 > Install Docker
 ```

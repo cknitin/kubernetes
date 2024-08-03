@@ -296,5 +296,5 @@ Kubectl describe pod PODNAME'
 #### Unscheduled 
     - The scheduler Cannot Schedule the pod right now, for eg. due to lacking of Resources or other Constraints 
 
-####Container Ready 
+#### Container Ready 
     - All Containers in the pod are ready

@@ -298,3 +298,8 @@ Kubectl describe pod PODNAME'
 
 #### Container Ready 
     - All Containers in the pod are ready
+
+
+```
+kubectl describe pod/initcintainer | grep -A 5 Conditions
+```

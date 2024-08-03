@@ -269,3 +269,32 @@ kubectl logs -f pod/initcontainer
 
 #### Completed 
     - The pod has run to Completion as there's nothing to keep it running. eg.- Completed jobs
+
+
+# POD Conditions
+
+A pod has a PodStatus, which has an array of PodConditions through which the pod has or has not passed. 
+
+- Using below command, you can get Condition of a pod 
+
+```
+Kubectl describe pod PODNAME'
+```
+
+
+### These are the possible types 
+
+#### Pod Scheduled:
+    - The pod has been schedule to a node 
+
+#### Ready 
+    - The pod is able to serve request and will be added to the load Balancing pods of all matching services. 
+
+#### Initialized
+    - All init Containers have Started Successfully 
+
+#### Unscheduled 
+    - The scheduler Cannot Schedule the pod right now, for eg. due to lacking of Resources or other Constraints 
+
+####Container Ready 
+    - All Containers in the pod are ready

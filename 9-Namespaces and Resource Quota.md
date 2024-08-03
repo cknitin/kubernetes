@@ -129,6 +129,14 @@ Two types of Constraints Can be set for each resource type - Request and Limits
 - CPU values are specified in 'millicpu' and memory in MiB.
 
 
+# Resource Quota 
+- A Kubernetes Cluster Can be divided into namespaces. If a Container is Created in a namespace that has a default CPU limit, and the Container does not specify its own CPU limit, then the Container is assigned the default CPU limit. 
+- Namespaces Can be assigned Resource Quota Objects, this will limit the amount of usage allowed to the Objects in that namespace. You Can limit -
+   - 1. Compute
+   - 2. Memory
+   - 3. Storage
+
+
 
 
 

@@ -469,6 +469,107 @@ kubectl delete -f cpu2.yml
 ```
 
 
-# same Lab for memory
+# Lab - for memory
+
+```
+vi memory-default.yml
+```
+
+```
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-min-max-demo-lr
+spec:
+  limits:
+  - max:
+      memory: 1Gi
+    min:
+      memory: 500Mi
+    type: Container
+```
+
+```
+kubeclt apply -f memory-default.yml
+```
+
+Now create pod
+
+```
+vi mem.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: constraints-mem-demo
+spec:
+  containers:
+  - name: constraints-mem-demo-ctr
+    image: nginx
+    resources:
+      limits:
+        memory: "800Mi"
+      requests:
+        memory: "600Mi"
+```
+
+```
+kubeclt apply -f mem.yml
+```
+
+```
+kubectl get pods
+
+kubectl describe pode --podname--
+```
+
+using descirbe cmd you will req and limit as per out yml file
+
+```
+kubectl delete -f mem.yml
+```
+
+# Lab
+
+```
+vi mem2.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: constraints-mem-demo
+spec:
+  containers:
+  - name: constraints-mem-demo-ctr
+    image: nginx
+    resources:
+      limits:
+        memory: "1800Mi"
+      requests:
+        memory: "600Mi"
+```
+
+```
+kubeclt apply -f mem2.yml
+```
+
+Now you will see error becuase limit goes beyond the posible limit i.e. 1 GB per pod
+
+```
+kubectl get pods
+
+kubectl describe pode --podname--
+```
+
+using descirbe cmd you will req and limit as per out yml file
+
+```
+kubectl delete -f mem.yml
+```
 
 
+Note  - If request is not specified & limit is given, then request = limit

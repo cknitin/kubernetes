@@ -136,6 +136,10 @@ Two types of Constraints Can be set for each resource type - Request and Limits
    - 2. Memory
    - 3. Storage
 
+Here are two restrictions that a resource Quota imposes on a namespace:
+
+Every Container that runs in the namespace must have its own CPU limit.
+The total amount of CPU used by all Containers in the namespace must not exceed a specified limit.
 
 
 

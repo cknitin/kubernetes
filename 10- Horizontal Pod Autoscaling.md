@@ -106,6 +106,8 @@ after running above command you will metrics server i.e. mertics-server-53dsg-sd
 ```
 kubectl logs -f  mertics-server-53dsg-sdf4523 -n kube-system
 ```
+Now create POD
+
 
 ```
 vi autoscale.yml
@@ -143,9 +145,35 @@ spec:
 kubectl apply -f autoscale.yml
 ```
 
+```
+kubectl get all
+```
 
+> To apply HPA 
 
 ```
 $ kubectl autoscale deployment mydeploy --cpu-percent=20 --min=1 --max=10
 ```
 
+Now start a new instance of this linux machine
+
+and go inside the POD
+
+```
+kubectl exec --podename-- --it /bin/bash
+```
+
+Terminal 1
+
+```
+watch kubectl get all 
+```
+ 
+
+Now Terminal 2
+
+```
+apt-update
+```
+
+you will see new pods in Terminal 2

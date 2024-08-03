@@ -141,7 +141,242 @@ Here are two restrictions that a resource Quota imposes on a namespace:
 Every Container that runs in the namespace must have its own CPU limit.
 The total amount of CPU used by all Containers in the namespace must not exceed a specified limit.
 
+# Lab  - of resorces
+
+## Set up k8s
+
+>  Install Docker
+```
+$  sudo apt update && apt -y install docker.io
+```
+
+> Install kubectl
+```
+$  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl &&   chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+```
+
+> Install Minikube
+```
+$  curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+```
+
+> Start Minikube
+```
+$  apt install conntrack
+$  minikube start --vm-driver=none
+$  minikube status
+```
 
 
+> To create resources
+
+resource.yml
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resources
+spec:
+  containers:
+  - name: resource
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5 ; done"]
+    resources:                                          
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+```
+
+```
+kubectl apply -f resorce.yml
+```
+
+```
+kubectl get pods
+```
+
+```
+kubectl describe pod resources <-- Pode name
+```
+
+# Lab - Resource Quota 
+
+```
+vi resourcequota.yml
+```
+
+```
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+   name: myquota
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: "400Mi"
+    requests.cpu: "200m"
+    requests.memory: "200Mi"
+```
+
+```
+kubectl apply -f resourcequota.yml
+```
+
+```
+vi testpod.yml
+```
+
+```
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: deployments
+spec:
+  replicas: 3
+  selector:      
+    matchLabels:
+     objtype: deployment
+  template:
+    metadata:
+      name: testpod8
+      labels:
+        objtype: deployment
+    spec:
+     containers:
+       - name: c00
+         image: ubuntu
+         command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5 ; done"]
+         resources:
+            requests:
+              cpu: "200m"
+```
+
+```
+kubectl apply -f testpod.yml
+```
+
+```
+kubectl get deploy
+```
+
+Note - Pod will not create because limit of namepsace is 200m CPU and in in above yml file we request for creating 3 pod with 200m CPU which will be 3 X 200 = 600
+this is exceed limit, reason being POD will not create
+
+```
+kubectl get rs   <--- this cmd will return a name use that below
+```
+
+```
+kubectl describe rs --name--
+```
+
+Now set limit range
+
+# Lab -
+
+limitRange.yml
+
+```
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+spec:
+  limits:
+  - default:
+      cpu: 1
+    defaultRequest:
+      cpu: 0.5
+    type: Container
+```
 
 
+now create pod
+
+pod.yml
+
+```
+kind: Pod                              
+apiVersion: v1                     
+metadata:                           
+  name: testpod                  
+spec:                                    
+  containers:                      
+    - name: c00                     
+      image: ubuntu              
+      command: ["/bin/bash", "-c", "while true; do echo Technical Guftgu; sleep 5 ; done"]
+  restartPolicy: Never       
+```
+
+Now Pod will be crated
+
+# Lab - Now set the Limit but not define the request
+
+cpu2.yml
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-2
+spec:
+  containers:
+  - name: default-cpu-demo-2-ctr
+    image: nginx
+    resources:
+      limits:
+        cpu: "1"
+
+```
+
+```
+kubectl apply -f cpu2.yml
+```
+
+```
+kubectl get pods
+```
+
+```
+kubectl describe pod --podname--
+
+Note: if request is not mention and limit is mention then Request = Limit
+```
+
+# Lab - now request is define but limit is not define
+
+```
+vi reqDefineButLimitNot.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-3
+spec:
+  containers:
+  - name: default-cpu-demo-3-ctr
+    image: nginx
+    resources:
+      requests:
+        cpu: "0.75"
+```
+
+```
+kubectl apply -f reqDefineButLimitNot.yml
+```
+
+```
+kucectl get pods
+```
+
+```
+kubectl describe pod --podname--
+
+Note - if req is define but limit is not define the, pod will get default limit
+```

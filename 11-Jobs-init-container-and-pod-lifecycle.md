@@ -239,3 +239,33 @@ watch kubectl get pods
 
 kubectl logs -f pod/initcontainer
 ```
+
+# Pod Lifecycle
+
+→ Pending → Running → Succeeded → Failed → Completed → Unkeawn | Running 
+
+- The phase of a Pod is a simple, high-level Summary of where the pod is in its lifecycle. 
+
+#### Pending 
+    - The pod has been accepted by the K&s system, but its not running. 
+    - One or more of the Container images is still downloading. 
+    - If the pod Cannot be scheduled because of resource Constraints. 
+    -
+
+#### Running
+    - The pod has been bound to a node. 
+    - All' of the Containers have been Created 
+    - Atleast one Container is Still running Or is in the process of starting or restarting. 
+
+#### Succeeded    
+    Succeeded All Containers in the lod have terminated in success, and will not be restarted.
+
+#### Failed 
+    - All Containers in the pod have terminated and atleast One Container has terminated in failure. 
+    - The Container either exited with non-zero Status or was terminated by the system. 
+#### Unknown 
+    - State of the pod could not be obtained. 
+    - Typically due to an error in network or communicating with the host of the Pod.
+
+#### Completed 
+    - The pod has run to Completion as there's nothing to keep it running. eg.- Completed jobs

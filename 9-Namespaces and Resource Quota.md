@@ -141,6 +141,7 @@ Here are two restrictions that a resource Quota imposes on a namespace:
 Every Container that runs in the namespace must have its own CPU limit.
 The total amount of CPU used by all Containers in the namespace must not exceed a specified limit.
 
+
 # Lab  - of resorces
 
 ## Set up k8s
@@ -380,3 +381,94 @@ kubectl describe pod --podname--
 
 Note - if req is define but limit is not define the, pod will get default limit
 ```
+
+# Lab
+
+prod-namespace 
+
+limits.CPU: "600m' 
+limits memory: "800" 
+
+requests.cpu: *200m 
+requests memory *500M 
+
+> Default Range 
+  cpu 
+    - (min) request - 05 
+    - (max) limit - 1 
+  memory 
+    - (min) request - 500M 
+    - (max) limit - 1G Quota
+
+
+```
+vi cpu2.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-2
+spec:
+  containers:
+  - name: default-cpu-demo-2-ctr
+    image: nginx
+    resources:
+      limits:
+        cpu: "1"
+```
+
+```
+kubecltapply -f cpu2.yml
+
+kubectl get pods
+
+kubectl describe pode --podname--
+```
+
+in above ex- we set limit cpu = 1, and in describe cmd result you will see request 1 but we did not set it, system will set request = limit
+
+```
+kubectl delete -f cpu2.yml
+```
+
+
+# Lab
+
+```
+vi cpu1.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-cpu-demo-3
+spec:
+  containers:
+  - name: default-cpu-demo-3-ctr
+    image: nginx
+    resources:
+      requests:
+        cpu: "0.75"
+```
+
+```
+kubecltapply -f cpu1.yml
+
+kubectl get pods
+
+kubectl describe pode --podname--
+```
+
+Here limit will be set default for cpu i.e. 1
+
+```
+kubectl delete -f cpu2.yml
+```
+
+
+# same Lab for memory
+
+

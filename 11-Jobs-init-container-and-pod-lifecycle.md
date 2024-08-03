@@ -216,7 +216,7 @@ spec:
   initContainers:
   - name: c1
     image: centos
-    command: ["/bin/sh", "-c", "echo LIKE AND SUBSCRIBE TECHNICAL GUFTGU > /tmp/xchange/testfile; sleep 30"]
+    command: ["/bin/sh", "-c", "echo Hello World > /tmp/xchange/testfile; sleep 30"]
     volumeMounts:        
       - name: xchange
         mountPath: "/tmp/xchange"  
@@ -234,4 +234,8 @@ spec:
 
 ```
 kubectl apply -f init.yml
+
+watch kubectl get pods
+
+kubectl logs -f pod/initcontainer
 ```

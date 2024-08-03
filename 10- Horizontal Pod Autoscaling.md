@@ -57,81 +57,58 @@ $  minikube start --vm-driver=none
 $  minikube status
 ```
 
-```
-vi cpu2.yml
-```
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: default-cpu-demo-2
-spec:
-  containers:
-  - name: default-cpu-demo-2-ctr
-    image: nginx
-    resources:
-      limits:
-        cpu: "1"
-```
-
-=================================================================================================
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: default-cpu-demo-3
-spec:
-  containers:
-  - name: default-cpu-demo-3-ctr
-    image: nginx
-    resources:
-      requests:
-        cpu: "0.75"
-```
-
-```
-vi MEMDEFAULT.YML
-```
-
-```
-apiVersion: v1
-kind: LimitRange
-metadata:
-  name: mem-min-max-demo-lr
-spec:
-  limits:
-  - max:
-      memory: 1Gi
-    min:
-      memory: 500Mi
-    type: Container
-```
-
-==========
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: constraints-mem-demo
-spec:
-  containers:
-  - name: constraints-mem-demo-ctr
-    image: nginx
-    resources:
-      limits:
-        memory: "800Mi"
-      requests:
-        memory: "600Mi"
-```
-
-
-# If request is not specified & limit is given, then request = limit
+> Install metric server
 
 ```
 $ wget -O metricserver.yml https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
+open the metricserver.yml file
+
+```
+vi metricserver.yml
+```
+
+now edit it
+
+```
+  labels: 
+    k8s-app: metrics-server 
+spec: 
+  containers: 
+    args: 
+    --cert-dir=/tmp 
+    --secure-port=4443 
+    --kubelet-insecure-tls   <------------Add this line here 🅰️ 🥇 
+    --kubelet-preferred-address-types=InternalIP, ExternalIP, Hostname 
+    --kubelet-use-node-status-port 
+    --metric-resolution=15s 
+    image: k8s.gcr.io/metrics-server/metrics-server:v0.5.2 
+    imagePullPolicy: IfNotPresent
+```
+
+```
+kubectl apply -f metricserver.yml
+```
+
+```
+kudectl get namespaces
+```
+
+there is a namespace kube-system
+
+```
+kubectl get pods -n kube-system
+```
+
+after running above command you will metrics server i.e. mertics-server-53dsg-sdf4523
+
+```
+kubectl logs -f  mertics-server-53dsg-sdf4523 -n kube-system
+```
+
+```
+vi autoscale.yml
 ```
 
 ```
@@ -161,6 +138,11 @@ spec:
             requests:
               cpu: 200m
 ```
+
+```
+kubectl apply -f autoscale.yml
+```
+
 
 
 ```

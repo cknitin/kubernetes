@@ -1,3 +1,18 @@
+# Horizontal Pod Autoscaler
+
+- Kubernetes has the possibility to automatically scale pods based on Observed CPU Utilization, which is horizontal Pod Autoscaling.
+
+- Scaling Can be done only for Scalable Objects like Controller, deployment or Replica Set
+
+- HPA is implemented as a Kubernetes API resource and a Controller
+
+- The Controller periodically adjust the number of replicas in a replication Controller or deployment to match the Observed average CPU Utilization to the target specified by user
+
+- The HPA is implemented as a Controller loop with a period Controlled by the Controller manager's-horizontal-pod-autoscaler sync-period flag (Default Value of 30 Seconds)
+
+- During each period, the Controller manager Queries the resource Utilization against the metrics specified in each horizontalPod Autoscaler definition
+
+
 # Lab
 > Install Docker
 ```

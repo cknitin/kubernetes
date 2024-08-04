@@ -147,6 +147,8 @@ tree helloworld/
 
 rm -rf helloworld
 ```
+
+
 ```
 helm install testchart2 stable/tomcat --set service.type=NodePort
 ```
@@ -157,4 +159,33 @@ helm install testchart2 stable/tomcat --set service.type=NodePort
 which helm ( to see which folder its installed )
 rm -rf /usr/local/bin/helm
 kubectl get all
+```
+
+
+```
+kubectl install  testjenkins stable/jenkins
+```
+
+```
+helm delete testjenkins
+```
+
+```
+helm install --dry-run testchart stable/tomcat
+```
+
+> To wait after install
+
+```
+helm install --wait --timeout 20s testcomcat2 stable/tomcat
+
+helm delete testtomcat2
+```
+
+> To install any specific version
+
+```
+helm install testchart stable/tomcat --version 0.4.0
+
+helm list  
 ```

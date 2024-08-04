@@ -229,3 +229,55 @@ There are two ways to pass Configuration data during install.
     ```
     helm status mychart
     ```
+
+# Lab -  I want to change the service type from loadBalancer to nodPort
+
+```
+helm show values stable/tomcat
+```
+
+you will see in yml (manifest) 
+
+service:
+    type: LoadBalancer
+
+
+now change LoadBalancer to NodePort
+
+```
+helm install testchart2 stable/tomcat --set service.type=NodePort
+```
+
+To check changes value
+
+```
+helm get values testchart2
+```
+
+```
+helm get manifest testchart2
+```
+
+```
+hel status testchart2
+```
+
+# More HELM commands
+
+- helm history: Fetch Release history helm history <Release Name>
+
+- helm delete: Uninstall the deployed Release helm delete < ReleaseName >
+
+- helm upgrade. “ Upgrade a Release" helm upgrade <ReleaseName><chartName> 
+    for eg
+
+    ```  
+    helm upgrade mychart stable/tomcat
+    ```  
+- helm rollback : Rollback a Release to any previous Version helm rollback <Release Name > < Revision > 
+
+  for eg 
+  
+    ```
+    helm rollback mychart
+    ```

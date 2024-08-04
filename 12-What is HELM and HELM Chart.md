@@ -10,11 +10,12 @@
 # Why Use Helm ? 
 Writing and maintaining Kubernetes YAML manifest for all the required Kubernetes Objects Can be a time consuming and tedious task. For the simplest of deployments, you would need atleast 3 YAML manifest with duplicated and Hardcoded Values. Helm simplifies this process and Create a Single package that can be advertised to your cluster. 
 
-→ HELM 3 was released in Nov. 2019. Helm K8s automatically maintains a database of all Versions of your releases. So whenever something goes wrong during deployment, raling back to the previou Version is just one command away.
+- HELM 3 was released in Nov. 2019. Helm K8s automatically maintains a database of all Versions of your releases. So whenever something goes wrong during deployment, raling back to the previou Version is just one command away.
 
 ## Some Keyword to Understand HELM 
 
-> CHART 
+> CHART
+ 
 A Chart is a Helm package. It contains all of the resource definitions necessary to run an application, tool or service inside of a K8s Cluster. Think of it like the Kubernetes equivalent of a Homebrew formula, apt, yum or RPM file. 
 
 OR 
@@ -22,6 +23,7 @@ OR
 Helm Charts are simply K8s YAML manifests Combined into a single package that Can be advertised to your K8s Cluster.
 
 > RELEASE 
+
 A release is an instance of a chart running in a K8s Cluster. One Chart Can often be installed many times into the Same Cluster and each time it is installed, a new release is Created. 
 
 Consider a MySQL chart, if you can install that Chart twice. Each one will have its own release, which will in turn have its own release name.
@@ -32,7 +34,8 @@ Consider a MySQL chart, if you can install that Chart twice. Each one will have 
 | 1	      | Installed Chart |
 | 2	      | Upgrade to 1.1  |
 
-→ Helm keep tracks of all Chart execution (Install/Upgrade/Rollback)	
+Helm keep tracks of all Chart execution (Install/Upgrade/Rollback)	
 
 > REPOSITORY 
+
 Location where packaged Charts Can be stored and Shared.

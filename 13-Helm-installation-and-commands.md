@@ -85,6 +85,10 @@ chmod 700 get_helm.sh
 which helm
 ```
 
+```
+helm version
+```
+
 # Lab - Let’s create Our First Helm Chart
 
 ```

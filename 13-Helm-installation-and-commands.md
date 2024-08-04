@@ -89,12 +89,64 @@ which helm
 helm version
 ```
 
-# Lab - Let’s create Our First Helm Chart
+```
+helm list repo
+```
+
+```
+helm list
+```
 
 ```
 helm repo add stable https://charts.helm.sh/stable
 ```
 
+```
+helm repo list
+```
+
+```
+helm repo remove stable
+```
+
+```
+helm repo list 
+```
+
+No repo found
+
+```
+helm repo search jenkins
+
+helm repo search tomcat
+
+```
+
+```
+helm show values stable/tomcat
+```
+
+```
+helm show chart stable/tomcat
+```
+
+```
+helm show all stable/tomcat
+```
+
+```
+apt-get install tree
+```
+
+```
+helm create helloworld
+
+ls
+
+tree helloworld/
+
+rm -rf helloworld
+```
 ```
 helm install testchart2 stable/tomcat --set service.type=NodePort
 ```

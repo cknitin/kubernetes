@@ -1,20 +1,34 @@
 # Helm Commands 
 
-- helm repo': Interact with charts Repository. Helm-3 No longer ships with a default chart Repository
+```
+helm repo': Interact with charts Repository. Helm-3 No longer ships with a default chart Repository
+```
 
-- helm repo list 
+```
+helm repo list 
+```
 
-- helm repo add <Name> <URL>
+```
+helm repo add <Name> <URL>
+```
 
-- helm repo remove <Name>
+```
+helm repo remove <Name>
+```
 
-- 'helm search': for finding charts for eg:- helm search repo <chart>
+```
+'helm search': for finding charts for eg:- helm search repo <chart>
+```
 
-- helm Show: Information about a chart
+```
+helm Show: Information about a chart
+```
 
- for eg
- helm show <values | chart | readmel all ><Chart Name>
+for eg
 
+```
+helm show <values | chart | readmel all ><Chart Name>
+```
 
 
 # Lab

@@ -189,3 +189,43 @@ helm install testchart stable/tomcat --version 0.4.0
 
 helm list  
 ```
+
+# More helm commands
+
+There are two ways to pass Configuration data during install. 
+
+--set: Specify Overrides on the command line 
+
+--values (or-f): Specify a YAML file with Overrides 
+    
+  Foreg:- 
+  
+  ```
+  helm install mychart Stable/tomcat -- set service type = 1 NodePort 
+  ```
+  
+  ```
+  helm install testchart Stable/Jenkins --set master servicetype = NodePort 
+  ```
+
+  'helm get': Information about from a Named Release 
+   
+    helm get <all / manifest/values> <Rel name> 
+  
+    For eg - 
+    ```
+     helm get all mychart
+    ```
+
+  - helm list 
+     -  List all the Named Releases
+
+  - helm status
+     - Display the Status of the Named Release
+
+  - helm status <Release Name>
+    eg:-
+    
+    ```
+    helm status mychart
+    ```

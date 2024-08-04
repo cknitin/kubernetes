@@ -41,3 +41,44 @@ Helm keep tracks of all Chart execution (Install/Upgrade/Rollback)
 > REPOSITORY 
 
 Location where packaged Charts Can be stored and Shared.
+
+
+
+DEV ==> QA ==> UAT ==> Prod
+
+
+#### Normal Kubernetes deployment YAML
+
+```
+apiversion: apps/v1 
+  Kind: Deployment 
+  metadata name: Release
+    name-springboot 
+    Spec: 
+    replicas: 2 
+  Selector: 
+  matchlabels 
+app.Kubernetes io/name: springboot
+```
+
+#### Helm deployment YAML 
+
+```
+apiversion: apps/v1
+  kind :Deployment 
+  metadata: 
+    name: Release-name-springboot 
+    spec: 
+    replicas: {{.Values replicaCount }} 
+    Selector: 
+     matchlabels: 
+     app. Kubernetes.io/name : Springboot
+```
+
+# HELM-3 ARCHITECTURE 
+
+- HELM-3 is a single-service architecture. One executable is responsible for implementing HELM. There is no Client-server split, nor is the Core processing logic distributed among Components. 
+
+- Implementation of HELM-3 is a Single command line, Client with no in-cluster server, or Controller. This tool exposes Command line Operations and Unilaterally handles the package management process.
+
+

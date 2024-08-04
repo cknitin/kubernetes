@@ -30,6 +30,17 @@ for eg
 helm show <values | chart | readmel all ><Chart Name>
 ```
 
+```
+helm install: Install a package foreg → helm install <Release Name> <chart Name>
+```
+
+```
+Wait Untill all Subjects are ready foreg → helm install mychart stable/tomcat --wait --timeout 105
+```
+
+```
+helm create: Create a new Chart with given name For eg - helm Create helloworld
+```
 
 # Lab
 

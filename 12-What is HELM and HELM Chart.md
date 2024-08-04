@@ -22,6 +22,7 @@ OR
 
 Helm Charts are simply K8s YAML manifests Combined into a single package that Can be advertised to your K8s Cluster.
 
+
 > RELEASE 
 
 A release is an instance of a chart running in a K8s Cluster. One Chart Can often be installed many times into the Same Cluster and each time it is installed, a new release is Created. 
@@ -35,6 +36,7 @@ Consider a MySQL chart, if you can install that Chart twice. Each one will have 
 | 2	      | Upgrade to 1.1  |
 
 Helm keep tracks of all Chart execution (Install/Upgrade/Rollback)	
+
 
 > REPOSITORY 
 

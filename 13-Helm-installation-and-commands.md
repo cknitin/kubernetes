@@ -281,3 +281,54 @@ hel status testchart2
     ```
     helm rollback mychart
     ```
+
+# Lab
+
+```
+helm install testchart stable/tommcat --version 0.4.0 
+
+helm upgrade testchart stable/tommcat 
+
+```
+
+```
+helm list
+```
+
+```
+helm history testchart2
+```
+
+Now rollback to old version i.e. tomcat 0.4.0
+
+```
+helm rollback testchart
+```
+
+# Some more HELM commands
+
+- helm pull - Download a chart from a Repository 
+    
+    helm pull <chartName> #download the tar 
+    helm pull--untar <Chartname> # Download & Untar
+    
+  eg-
+ 
+  ```
+   helm pull --untar stable/tomcat 
+  ```
+
+- Install from a full URL eg: helm install mychart <URL> → Install from a local Chart archive
+  eg- 
+  
+  ```
+    helm install mychart tomcat-04.3 tgz
+  ````
+
+- Install from an unpacked chart directory
+  
+  eg-
+ 
+  ```      
+  heln install mychart 7
+  ```

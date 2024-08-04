@@ -81,4 +81,5 @@ apiversion: apps/v1
 
 - Implementation of HELM-3 is a Single command line, Client with no in-cluster server, or Controller. This tool exposes Command line Operations and Unilaterally handles the package management process.
 
+![HELM-3 ARCHITECTURE]([http://url/to/img.png](https://github.com/cknitin/kubernetes/blob/main/images/HLM-ar-1.png))
 

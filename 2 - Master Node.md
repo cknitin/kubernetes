@@ -41,7 +41,7 @@ to kube-apiserver).
    b. If k8s on non-cloud then it will be kube-controller-manager
 
 #### Components on master that runs controller:
-   a. Node controller: for checking the cloud providers to determine of a node has been detected in the cloud after id stops responding.
-   b. Route controller: responsible for setting up network, routes on your cloud.
-   c. Service controller: responsible for load balancers on your cloud against services of type load balancers.
-   d. Volume controller: for creating, attaching and mounting volumes and interacting with the cloud provider to orchestrate volume.
+   - a. Node controller: for checking the cloud providers to determine of a node has been detected in the cloud after id stops responding.
+   - b. Route controller: responsible for setting up network, routes on your cloud.
+   - c. Service controller: responsible for load balancers on your cloud against services of type load balancers.
+   - d. Volume controller: for creating, attaching and mounting volumes and interacting with the cloud provider to orchestrate volume.

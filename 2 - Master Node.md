@@ -37,8 +37,8 @@ to kube-apiserver).
 ### 4. Controller Manager:
 - Make sure that actual state of cluster matches the desired state.
 - Two possible choices for controller manager:
-   a. If k8s on cloud, then it will be cloud-controller-manager.
-   b. If k8s on non-cloud then it will be kube-controller-manager
+  - a. If k8s on cloud, then it will be cloud-controller-manager.
+  - b. If k8s on non-cloud then it will be kube-controller-manager
 
 #### Components on master that runs controller:
    - a. Node controller: for checking the cloud providers to determine of a node has been detected in the cloud after id stops responding.
